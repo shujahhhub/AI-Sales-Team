@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # 1. The AI Brain
+  ai-brain:
+    build: .
+    ports:
+      - "8000:8000"
+    command: uvicorn app:app --host 0.0.0.0 --port 8000
+
+  # 2. The CRM Database
+  crm-api:
+    build: .
+    ports:
+      - "8001:8001"
+    command: uvicorn crm_api:app --host 0.0.0.0 --port 8001
+
+  # 3. The CEO Dashboard
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    command: streamlit run dashboard.py --server.address 0.0.0.0 --server.port 8501
+    depends_on:
+      - crm-api
