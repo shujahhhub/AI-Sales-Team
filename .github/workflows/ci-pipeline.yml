@@ -1,0 +1,31 @@
+name: AI Sales Team CI/CD
+
+# 1. When should this pipeline run?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # 2. What should the cloud robot do?
+  build-and-verify:
+    # 3. Create a fresh, blank Linux server
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step A: Download your code from the repository
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step B: Install the newest Docker engine on the cloud server
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    # Step C: Attempt to build your entire Microservices Architecture
+    - name: Build the Docker Architecture
+      run: docker compose build
+      
+    # Step D: (Placeholder for CD)
+    - name: Continuous Deployment Status
+      run: echo "Code is clean! Ready to be deployed to the live cloud server."
