@@ -42,7 +42,7 @@ AI Brain API Docs: http://localhost:8000/docs
 
 CRM Engine API Docs: http://localhost:8001/docs
 
-🧪 Triggering the AI Worker
+-- Triggering the AI Worker
 Once the Docker network is online, you can deploy the autonomous agent to generate a lead and push it to your dashboard.
 
 Open a separate terminal and execute:
@@ -51,5 +51,5 @@ Bash
 python3 ai_agent.py
 Wait for the success prompt, then refresh your Streamlit dashboard to approve the newly injected lead.
 
-🔄 CI/CD Pipeline
+-- CI/CD Pipeline
 This repository implements a Continuous Integration (CI) pipeline via GitHub Actions. Upon every push or pull request to the main branch, an isolated runner automatically provisions a fresh environment and rebuilds the multi-container Docker architecture to prevent regressions before deployment.
